@@ -29,8 +29,42 @@ Uzly obsahuju ukazatele na sousedy.
 - Next Key level 
 
 ##Transakce
-- Skupina príznakov ktorou prevediem DB z jedneho konzistentného stabu do druhého 
+- Skupina príznakov ktorou prevediem DB z jedneho konzistentného stabu do druhého\
+ 
 A - Aromicity - vše jako celek nebo nic \
 C - Consistency - neni porušene žiadne integritni omezeni \
-I - Isolation - operace uvni
+I - Isolation - operace uvni\
 D - Durability
+
+
+#2. workshop
+## Škálovani a dostupnosť
+ 
+- vertikalne škálovani 
+    - zmena HW /či už HW alebo SW 
+- horizontalne 
+    - loudbalancovať na stroj vedla ( na viacero mašín)
+### Autoscaling
+automatizace horizontalního a vert. škalovani na základe metrik 
+ 
+ #škalovanie:
+ - clustering - rozdeleni req. napriek strojmi HA 
+  
+    Replikace
+ - sharding - rozdeleni dat naprič stroji 
+ - partitioning - rozdelenie dat do tabuliek 
+ 
+ 
+ ## Ramka a DB 
+ BufferPool - do ramky si uklada data z tabulky s ktorými pracuje. Uklada si ich do ***page***s.
+ Ak je v nich zmena su to dirty pages. (data so zmenou ale neuložena v DB). Na hdd sú uložene ibd data. 
+ Po commite  sa  zmeny uložia do double writte buffer, pak do idb - až pak sa pošle uživateli potvrdenie o commite. 
+ Rollback segment - kvázi snapchot. 
+ 
+Pomocne tabulky sa  ukladajú v RWM, ak su vačšie ako nastavene hodnoty, ukladajú sa na disk.
+
+#3. workshop 
+
+
+
+ 
