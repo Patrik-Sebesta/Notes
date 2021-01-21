@@ -3,7 +3,9 @@ Linux comands
 - RO mounted disk
 ````
 fdisk -l
-sudo mount -o remount,uid=1000,gid=1000,rw /dev/sdXX
+ntfsfix /dev/sda2
+umount /dev/sda2
+sudo mount -o uid=1000,gid=1000,rw /dev/sdXX
 ````
 - found sizes 
 ````
@@ -24,4 +26,15 @@ lvextend -rL +5G /var
 total 0
 lrwxrwxrwx. 1 patrik.sebesta patrik.sebesta 37 Oct  8 09:47 slack.desktop -> /usr/share/applications/slack.desktop
 lrwxrwxrwx. 1 patrik.sebesta patrik.sebesta 42 Oct  8 09:51 terminator.desktop -> /usr/share/applications/terminator.desktop
+````
+
+
+- what is running on port 
+````
+netstat -tulpen | grep 12345
+````
+
+- check new added lines in logs 
+````
+for i in {40..55}; do echo -n "14:${i} - "; grep -E "Nov\ 30\ 13:${i}" /var/log/tm/afs.log | wc -l; done
 ````

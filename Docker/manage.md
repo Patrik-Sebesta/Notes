@@ -56,6 +56,10 @@ docker inspect [meno]
 ### zmazanie 
 ````
 docker container rm -f ID 
+
+lsof -i -P -n | grep 12345
 ````
+
+
 
 
